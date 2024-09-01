@@ -1,5 +1,7 @@
-const contactApiBaseUrl = "http://localhost:5000/api/contact";
-const personApiBaseUrl = "http://localhost:5000/api/person";
+const apiUrl = window.location.hostname === 'localhost' ? 'http://localhost:5000' : 'http://35.208.153.129:8080';
+
+const contactApiBaseUrl = apiUrl + "/api/contact";
+const personApiBaseUrl = apiUrl + "/api/person";
 var personId = "";
 
 function listContacts() {

@@ -1,4 +1,6 @@
-const apiBaseUrl = "http://localhost:5000/api/person";
+const apiUrl = window.location.hostname === 'localhost' ? 'http://localhost:5000' : 'http://35.208.153.129:8080';
+
+const apiBaseUrl = apiUrl + "/api/person";
 
 function listPersons() {
   $.ajax({
