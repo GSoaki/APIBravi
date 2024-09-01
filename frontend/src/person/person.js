@@ -1,7 +1,7 @@
 const apiUrl =
   window.location.hostname === "localhost"
     ? "http://localhost:5000"
-    : "http://35.208.153.129:8080";
+    : "http://35.208.153.129:5000";
 
 const apiBaseUrl = apiUrl + "/api/person";
 
