@@ -2,6 +2,7 @@
 using API_Bravi.Repository.Interfaces;
 using API_Bravi.Services;
 using API_Bravi.Services.Interfaces;
+using System.Text.Json.Serialization;
 
 public class PersonService : IPersonService
 {
@@ -40,12 +41,6 @@ public class PersonService : IPersonService
         if (person == null)
         {
             throw new ArgumentNullException(nameof(person), "A entidade Person não pode ser nula.");
-        }
-
-        var existingPerson = _personRepository.GetById(person.Id);
-        if (existingPerson == null)
-        {
-            throw new KeyNotFoundException($"Person com Id {person.Id} não foi encontrada.");
         }
 
         _personRepository.Update(person);

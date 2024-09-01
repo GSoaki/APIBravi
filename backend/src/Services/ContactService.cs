@@ -40,12 +40,6 @@ public class ContactService : IContactService
             throw new ArgumentNullException(nameof(contact), "A entidade Contact não pode ser nula.");
         }
 
-        var existingContact = _contactRepository.GetById(contact.Id);
-        if (existingContact == null)
-        {
-            throw new KeyNotFoundException($"Contact com ID {contact.Id} não foi encontrado.");
-        }
-
         _contactRepository.Update(contact);
         _contactRepository.SaveChanges();
     }
