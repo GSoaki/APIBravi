@@ -1,0 +1,17 @@
+# Use uma imagem do Node.js
+FROM node:18
+
+# Defina o diretório de trabalho dentro do container
+WORKDIR /app
+
+# Copie os arquivos do frontend para o container
+COPY . .
+
+# Instale o http-server globalmente
+RUN npm install -g http-server
+
+# Exponha a porta que o http-server vai rodar
+EXPOSE 8080
+
+# Comando para rodar o http-server no diretório de trabalho
+CMD ["http-server", "."]
