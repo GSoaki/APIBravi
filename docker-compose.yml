@@ -12,9 +12,12 @@ services:
       - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=LocalDB;UId=sa;Password=Password123;Trusted_Connection=False
     depends_on:
       - sqlserver
+    networks:
+      - mynetwork
 
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
     environment:
       SA_PASSWORD: "Password123"
       ACCEPT_EULA: "Y"
@@ -22,6 +25,8 @@ services:
       - "1433:1433"
     volumes:
       - sql_data:/var/opt/mssql
+    networks:
+      - mynetwork
 
   frontend:
     build:
@@ -29,6 +34,12 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
+    networks:
+      - mynetwork
 
 volumes:
   sql_data:
+
+networks:
+  mynetwork:
+    driver: bridge
